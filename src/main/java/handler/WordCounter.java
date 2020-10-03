@@ -1,3 +1,5 @@
+package handler;
+
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -12,12 +14,10 @@ public class WordCounter {
 
     private Map<String, Integer> map = new HashMap<>();
     private OkHttpClient okHttpClient = new OkHttpClient();
-
+    private static WordCounter wordCounter;
 
     private WordCounter() {
     }
-
-    private static WordCounter wordCounter;
 
     public static WordCounter instance() {
         if (wordCounter == null) {

@@ -1,9 +1,9 @@
+package main;
 
-import java.util.*;
+import handler.MyException;
+import handler.WordCounter;
 
 public class Main {
-
-    private static Map<String, Integer> map = new HashMap<>();
 
     public static void main(String[] args) {
         WordCounter wordCount = WordCounter.instance();
