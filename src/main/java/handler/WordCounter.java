@@ -57,7 +57,7 @@ public class WordCounter {
 
     private void score(String word) throws MyException {
         int quantity = 0;
-        String html = "https://mail.ru/";
+        String html = "https://news.yandex.ru/computers.html";
 
         String text = Jsoup.parse(getDocument(html)).text();
 
