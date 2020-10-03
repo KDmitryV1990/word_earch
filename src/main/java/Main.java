@@ -7,8 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
         WordCounter wordCount = WordCounter.instance();
-        wordCount.enteredWord();
+        try {
+            wordCount.enteredWord();
+        } catch (MyException e) {
+            e.printStackTrace();
+        }
     }
-
-
 }
