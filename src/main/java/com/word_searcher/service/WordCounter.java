@@ -1,19 +1,13 @@
-package handler;
+package com.word_searcher.service;
 
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import org.jsoup.Jsoup;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.util.*;
+
 
 public class WordCounter {
 
     private Map<String, Integer> map = new HashMap<>();
-    private OkHttpClient okHttpClient = new OkHttpClient();
     private static WordCounter wordCounter;
 
     private WordCounter() {
@@ -26,40 +20,23 @@ public class WordCounter {
         return wordCounter;
     }
 
-    public void enteredWord() throws MyException {
+    public void searchWord(String document) {
         String word;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type the word");
         while (scanner.hasNextLine()) {
             word = scanner.nextLine();
-            score(word);
+            count(word, document);
         }
         scanner.close();
     }
 
-    private String getDocument(String path) throws MyException {
-        Request request = new Request.Builder()
-                .url(path)
-                .get()
-                .build();
-        Call call = okHttpClient.newCall(request);
-        try {
-            Response response = call.execute();
-            if (response.code() == HttpURLConnection.HTTP_OK) {
-                return response.body().string();
-            } else {
-                throw new MyException(String.format("Document not found. Path: %s.", path));
-            }
-        } catch (IOException e) {
-            throw new MyException(e);
-        }
-    }
 
-    private void score(String word) throws MyException {
+    private void count(String word, String document) {
         int quantity = 0;
         String html = "https://news.yandex.ru/computers.html";
 
-        String text = Jsoup.parse(getDocument(html)).text();
+        String text = Jsoup.parse(document).text();
 
         String[] wordArray = text.split("[^a-zA-Z_0-9а-яёА-ЯЁ]");
         for (String element : wordArray) {
