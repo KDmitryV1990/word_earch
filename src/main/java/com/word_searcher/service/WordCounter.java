@@ -4,7 +4,6 @@ import org.jsoup.Jsoup;
 
 import java.util.*;
 
-
 public class WordCounter {
 
     private Map<String, Integer> map = new HashMap<>();
@@ -22,13 +21,16 @@ public class WordCounter {
 
     public void searchWord(String document) {
         String word;
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, "Cp866");
         System.out.println("Type the word");
         while (scanner.hasNextLine()) {
+            System.out.println("To exit, press 'n'");
             word = scanner.nextLine();
             count(word, document);
+            if ("n".equalsIgnoreCase(word)) {
+                scanner.close();
+            }
         }
-        scanner.close();
     }
 
 

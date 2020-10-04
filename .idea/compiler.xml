@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="word search" />
+        <module name="word_searcher" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="word search" target="1.8" />
+      <module name="word_searcher" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
